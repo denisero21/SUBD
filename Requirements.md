@@ -92,4 +92,4 @@ Database description:
 ---
 Normalized database:
 
-![alt text](Pictures/normalized.png)
+<!-- ![alt text](Pictures/normalized.png) -->
