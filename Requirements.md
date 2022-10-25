@@ -79,10 +79,6 @@ Database description:
    - **idAssist** - serial
    - idPlayer - id of player
 
-- Genre - movie genre
-   - **IdGenre** - uuid
-   - Name - text(genre name)
-
 - Victory
    - **idVictory** - serial
    - idGame - id of the game
