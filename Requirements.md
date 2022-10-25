@@ -1,5 +1,5 @@
 ## Requirements:
-1. User roles:
+<!-- 1. User roles:
    - default
    - moderator
    - admin
@@ -11,7 +11,7 @@
    - edit and add all stats
 3. Admin:
    - same as moderator and block user
----
+--- -->
 Database diagram:
 
 ![alt text](Pictures/diagram.jpeg.jpg)
@@ -20,76 +20,84 @@ Database description:
 
 **Highlighted** fields are primary keys or part of them
 
-- User - all users
+<!-- - User - all users
    - **IdUser** - uuid
    - IdRole - uuid(foreign key)
    - Name - text(user name)
    - LastName - text(user last name)
    - Password - text(user password)
    - Email - text(user email)
-   - Is_blocked - bool(is the user blocked or not)
+   - Is_blocked - bool(is the user blocked or not) -->
 
-- Role - roles for users
+<!-- - Role - roles for users
    - **IdRole** - uuid
    - Name - text(role name)
 - Log - user action logs
    - **IdUser** - uuid(foreign key)
    - Date - time(time of user action)
-   - Info - text(user action for log)
+   - Info - text(user action for log) -->
 
-- Review - movie review
-   - **IdReview** - uuid
-   - IdMovie - uuid(foreign key)
-   - Text - text(movie review text)
-   - User - uuid(IdUser, one to one review user)
+- Season - football season
+   - **idSeason** - serial
+   - Championship - serial(id of championship)
+   - Cup - serial(id of cup)
 
-- Rating - movie rating
-   - **IdRating** - uuid
-   - IdMovie - uuid(foreign key)
-   - Grade - int(movie rating from 1 to 10)
-   - User - uuid(IdUser, one to one rating user)
+- Championship - football championship
+   - **idChampionship** - uuid
+   - Team - list of teams
 
-- Category - movie category
-   - **IdCategory** - uuid
-   - Name - text(category name)
+- Team - football team
+   - **idTeam** - serial
+   - Name - varchar(team name)
+   - Player - list of players
+   - Game - list of games
+   - Victory - list of victories
+   - Draw - list of draws
+   - Lose - list of loses
 
-- Movie
-   - **IdMovie** - uuid
-   - IdCategory - uuid(foreign key)
-   - Title - text(movie title)
-   - Tagline - text(movie tagline)
-   - Description - text(movie description)
-   - Poster - text(movie poster image path)
-   - Year - int(movie release year)
-   - Country - text(movie production country)
-   - World_premiere - time(movie release date)
-   - Budget - int(movie production budget)
-   - Fees_in_USA - int(fees in USA)
-   - Fees_in_world - int(fees in the world)
+- Player - football player
+   - **idPlayer** - serial
+   - Name - varchar(team name)
+   - Goal - int(count of goals)
+   - Assist - int(count of assists)
+   
 
-- Actors - many to many table between movie and staff
-   - **IdStaff** - uuid(foreign key)
-   - **IdMovie** - uuid(foreign key)
+- Game - football game
+   - **idGame** - serial
+   - Team 1 - id of the first team
+   - Team 2 - id of the second team
+   - Score - varchar(match score)
+   - isVictory - bool(if first team wins)
+   - isDraw(if draw)
+   - isLose(if the first team loses)
 
-- Directors - many to many table between movie and staff
-   - **IdStaff** - uuid(foreign key)
-   - **IdMovie** - uuid(foreign key)
+- Goal
+   - **idGoal** - serial
+   - idPlayer - id of player
 
-- MovieGenre - many to many table between movie and genre
-   - **IdGenre** - uuid(foreign key)
-   - **IdMovie** - uuid(foreign key)
+- Assist
+   - **idAssist** - serial
+   - idPlayer - id of player
 
 - Genre - movie genre
    - **IdGenre** - uuid
    - Name - text(genre name)
 
-- Staff - movie staff
-   - **IdStaff** - uuid
-   - Name - text(staff member name)
-   - Age - int(staff member age)
-   - Description - text(staff member description)
-   - Image - text(staff member image path)
+- Victory
+   - **idVictory** - serial
+   - idGame - id of the game
+   - idTeam - id of the team
+ 
+- Draw
+   - **idDraw** - serial
+   - idGame - id of the game
+   - idTeam - id of the team
+ 
+- Lose
+   - **idLose** - serial
+   - idGame - id of the game
+   - idTeam - id of the team
 ---
-Normalized database:
+<!-- Normalized database: -->
 
 <!-- ![alt text](Pictures/normalized.png) -->
