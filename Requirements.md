@@ -20,80 +20,54 @@ Database description:
 
 **Highlighted** fields are primary keys or part of them
 
-<!-- - User - all users
-   - **IdUser** - uuid
-   - IdRole - uuid(foreign key)
-   - Name - text(user name)
-   - LastName - text(user last name)
-   - Password - text(user password)
-   - Email - text(user email)
-   - Is_blocked - bool(is the user blocked or not) -->
-
-<!-- - Role - roles for users
-   - **IdRole** - uuid
-   - Name - text(role name)
-- Log - user action logs
-   - **IdUser** - uuid(foreign key)
-   - Date - time(time of user action)
-   - Info - text(user action for log) -->
-
 - Season - football season
-   - **idSeason** - serial
-   - Championship - serial(id of championship)
-   - Cup - serial(id of cup)
+   - **idSeason** - int
+   - Name - varchar(20)
 
 - Championship - football championship
-   - **idChampionship** - uuid
-   - Team - list of teams
+   - **idChampionship** - int
+   - idSeason - int(id of season)
+   - Name - varchar(20)
+ 
+ - Cup - football cup
+   - **idCup** - int
+   - idSeason - int(id of season)
+   - Name - varchar(20)
 
 - Team - football team
-   - **idTeam** - serial
-   - Name - varchar(team name)
-   - Player - list of players
-   - Game - list of games
-   - Victory - list of victories
-   - Draw - list of draws
-   - Lose - list of loses
+   - **idTeam** - int
+   - idChampionship - int(id of championship)
+   - idCup - int(id of cup)
+   - Name - varchar(20)
+   - Victory - int(count of victories)
+   - Draw - int(count of draws)
+   - Lose - int(count of loses)
 
 - Player - football player
-   - **idPlayer** - serial
-   - Name - varchar(team name)
+   - **idPlayer** - int
+   - Name - varchar(20)
    - Goal - int(count of goals)
    - Assist - int(count of assists)
    
 
 - Game - football game
-   - **idGame** - serial
-   - Team 1 - id of the first team
-   - Team 2 - id of the second team
-   - Score - varchar(match score)
-   - isVictory - bool(if first team wins)
-   - isDraw(if draw)
-   - isLose(if the first team loses)
+   - **idGame** - int
+   - Team 1 - int(id of the first team)
+   - Team 2 - int(id of the second team)
+   - Score - varchar(5)
+   - isVictory - bool (if first team wins)
+   - isDraw - bool (if draw)
+   - isLose - bool (if the first team loses)
 
 - Goal
-   - **idGoal** - serial
-   - idPlayer - id of player
+   - **idGoal** - int
+   - idPlayer - int(id of player)
 
 - Assist
-   - **idAssist** - serial
-   - idPlayer - id of player
+   - **idAssist** - int
+   - idPlayer - int(id of player)
 
-- Victory
-   - **idVictory** - serial
-   - idGame - id of the game
-   - idTeam - id of the team
- 
-- Draw
-   - **idDraw** - serial
-   - idGame - id of the game
-   - idTeam - id of the team
- 
-- Lose
-   - **idLose** - serial
-   - idGame - id of the game
-   - idTeam - id of the team
 ---
-<!-- Normalized database: -->
+Normalized database:
 
-<!-- ![alt text](Pictures/normalized.png) -->
+![alt text](Pictures/diagram_norm.jpg)
