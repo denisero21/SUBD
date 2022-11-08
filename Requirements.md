@@ -62,10 +62,12 @@ Database description:
 - Goal
    - **idGoal** - int
    - idPlayer - int(id of player)
+   - idGame - int(id of game)
 
 - Assist
    - **idAssist** - int
    - idPlayer - int(id of player)
+   - idGame - int(id of game)
 
 ---
 Normalized database:
