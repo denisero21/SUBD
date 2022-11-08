@@ -48,7 +48,11 @@ Database description:
    - Name - varchar(20)
    - Goal - int(count of goals)
    - Assist - int(count of assists)
-   
+
+- Team_and_game 
+   - **idTeamAndGame** - int
+   - idTeam - int(ForeignKey)
+   - idGame - int(ForeignKey)
 
 - Game - football game
    - **idGame** - int
