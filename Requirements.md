@@ -26,18 +26,18 @@ Database description:
 
 - Championship - football championship
    - **idChampionship** - int
-   - idSeason - int(id of season)
+   - idSeason - int(ForeignKey)
    - Name - varchar(20)
  
  - Cup - football cup
    - **idCup** - int
-   - idSeason - int(id of season)
+   - idSeason - int(ForeignKey)
    - Name - varchar(20)
 
 - Team - football team
    - **idTeam** - int
-   - idChampionship - int(id of championship)
-   - idCup - int(id of cup)
+   - idChampionship - int(ForeignKey)
+   - idCup - int(ForeignKey)
    - Name - varchar(20)
    - Victory - int(count of victories)
    - Draw - int(count of draws)
@@ -52,8 +52,8 @@ Database description:
 
 - Game - football game
    - **idGame** - int
-   - Team 1 - int(id of the first team)
-   - Team 2 - int(id of the second team)
+   - Team 1 - int(ForeignKey)
+   - Team 2 - int(ForeignKey)
    - Score - varchar(5)
    - isVictory - bool (if first team wins)
    - isDraw - bool (if draw)
@@ -61,13 +61,13 @@ Database description:
 
 - Goal
    - **idGoal** - int
-   - idPlayer - int(id of player)
-   - idGame - int(id of game)
+   - idPlayer - int(ForeignKey)
+   - idGame - int(ForeignKey)
 
 - Assist
    - **idAssist** - int
-   - idPlayer - int(id of player)
-   - idGame - int(id of game)
+   - idPlayer - int(ForeignKey)
+   - idGame - int(ForeignKey)
 
 ---
 Normalized database:
